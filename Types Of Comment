@@ -25,20 +25,21 @@ int isComment(string line)
             {
                 return 2;
             }
-            else{
+            /*else{
                 if(line[i]=='\n')
                 {
 
                     continue;
                 }
-            }
+            }*/
         }
     }
+    return -1;
 }
 int main()
 {
 	string line ;
-	getline(cin,line);
+	getline(cin,line,'$');
 
 	if(isComment(line)==-1)
     {
