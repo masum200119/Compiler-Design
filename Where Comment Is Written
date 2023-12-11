@@ -53,20 +53,8 @@ string removeComments(string prgm)
 
 int main()
 {
-    string prgm = " /* Test program */ \n"
-                  " int main() \n"
-                  " {		 \n"
-                  "	 // variable declaration \n"
-                  "	 int a, b, c; \n"
-                  "	 /* This is a test \n"
-                  "		 multiline	 \n"
-                  "		 comment for \n"
-                  "		 testing */	 \n"
-                  "	 a = b + c;	 \n"
-                  " }		 \n";
-    cout << "Given Program \n";
-    cout << prgm << endl;
-    cout << " Modified Program ";
+    string prgm;
+    getline(cin,prgm,'$');
     cout << removeComments(prgm);
     for(auto l:v)
     {
