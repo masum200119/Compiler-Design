@@ -1,28 +1,21 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include<bits/stdc++.h>
+using namespace std;
 
 
 char res[100],arg1[100],op[100],arg2[100],sym[100];
 int main()
 {
-    char c;
-    int i=0,j=0;
-    printf("Enter expression with $ : ");
-    while((c=getchar()) != '$')
-    {
-        res[i++]=c;
-    }
+    string res;
+    getline(cin,res,'$');
 
-    int n=i-1;
     void *ptr;
 
     printf("Symbol Table : \n");
     printf("Name\t\tAddress\t\tType\n");
 
-    for(j=0; j<=n; j++)
+    for(int j=0; j<res.size(); j++)
     {
-        c=res[j];
+        char c=res[j];
         if(isalpha(toascii(c)))
         {
             ptr = malloc(c);
