@@ -1,0 +1,62 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int isComment(string line)
+{
+
+	if(line.size()<=2)
+    {
+
+        return -1;
+
+    }
+    else{
+        bool x=false;
+        for(int i=0;i<line.size();i++)
+        {
+
+            if(line[i]=='/' and line[i+1]=='/')
+            {
+
+                return 1;
+            }
+            else if(line[i]=='/' and line[i+1]=='*')
+            {
+                return 2;
+            }
+            else{
+                if(line[i]=='\n')
+                {
+
+                    continue;
+                }
+            }
+        }
+    }
+}
+int main()
+{
+	string line ;
+	getline(cin,line);
+
+	if(isComment(line)==-1)
+    {
+
+        cout<<"It is not a comment"<<endl;
+    }
+    else{
+        if(isComment(line)==1)
+        {
+
+            cout<<"Single line comment"<<endl;
+        }
+        else{
+            cout<<"Multiline comment"<<endl;
+        }
+    }
+
+	return 0;
+}
+
+
