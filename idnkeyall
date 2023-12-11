@@ -1,0 +1,57 @@
+#include<string.h>
+#include<ctype.h>
+#include<stdio.h>
+void keyword(char str[10])
+{
+    if(isdigit(str[0])==1 || strcmp("for",str)==0 || strcmp("while",str)==0 ||strcmp("do",str)==0 || strcmp("int",str)==0 ||strcmp("float",str)==0||
+        strcmp("char",str)==0||strcmp("double",str)==0||strcmp("static",str)==0||strcmp("switch",str)==0||strcmp("case",str)==0)printf("\n%s is not a identifier",str);
+
+    else
+        printf("\n%s is an identifier",str);
+}
+int main()
+{
+    FILE *in, *out;
+    char c,str[10];
+    int i=0,j=0;
+    printf("\n Enter the c program \n");
+    in=fopen("input","w");
+
+    while((c=getchar())!=EOF)putc(c,in);
+    fclose(in);
+    in=fopen("input","r");
+    out=fopen("output","w");
+
+    while((c=getc(in)) != EOF){
+
+        if(isalpha(c) || c=='_')
+        {
+           putc(c,out);
+           c=getc(in);
+           while(isdigit(c)||isalpha(c)||c=='_'){
+                    putc(c,out);
+                    c=getc(in);
+            }
+        putc(' ',out);
+        ungetc(c,in);
+        }
+    }
+    fclose(out);
+    fclose(in);
+
+    out = fopen("output","r");
+
+    while((c=getc(out))!=EOF){
+        if(c!=' ')
+        str[i++]=c;
+        else{
+            str[i]='\0';
+            keyword(str);
+            i=0;
+        }
+    }
+    fclose(out);
+    
+    return 0;
+
+}
